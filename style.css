@@ -6,6 +6,10 @@
     box-sizing: border-box;
     font-family: 'Archivo';
     color: var(--color);
+  }
+
+*:focus {
+  outline: none;
 }
 
 h1 {
@@ -56,11 +60,12 @@ input[type="text"] {
     cursor: pointer;
 }
 
-.playlist-item:hover {
+.playlist-item:hover, .playlist-item:focus, .playlist-item:active {
     background: var(--light);
 }
 
-.list-song:hover {
+
+.list-song:hover, .list-song:focus, .list-song:active {
   background: var(--light);
 }
 
@@ -162,8 +167,10 @@ input[type="text"] {
   display: flex;
   flex-direction: column;
   min-height: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
+
+
 
 
 
