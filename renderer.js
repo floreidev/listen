@@ -6,8 +6,25 @@ var themes = {
         "light": "#242424",
         "highlight": "#595A5A",
         "color": "#fff"
-    }
+    },
+  light: {
+    "main": "#ededed",
+    "secondary": "#e8e8e8",
+    "dark": "#fff",
+    "light": "#dbdbdb",
+    "highlight": "#a6a7a7"
+  }
 }
+
+function loadContentPage(page, values) {
+  var raw = window.listenAPI.getPage(page);
+  for(var from in values) {
+    raw.replace(new RegExp(from, "g"), values[from]);
+  }
+  
+}
+
+
 
 var settings = JSON.parse(window.localStorage.getItem("settings") || "{}");
 
