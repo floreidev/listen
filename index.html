@@ -19,10 +19,60 @@
             </form>
         </div>
         <div class="main">
-            <div id="playlistArea" class="sidebar"></div>
-            <div class="content"></div>
+            <div id="playlistArea" class="sidebar">
+              <div data-playlist-id="xxyyzz" class="playlist-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLu1FFozStQ0trt8Ru6pirKphwkK_dLF9BtQ8sB4ZYdw&s">
+                <div class="playlist-item-details">
+                  <h1>playlist</h1>
+                  <h2>author</h2>
+                </div>
+              </div>
+            </div>
+            <div class="content" data-tab="playlist">
+              <div class="playlist-top">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLu1FFozStQ0trt8Ru6pirKphwkK_dLF9BtQ8sB4ZYdw&s">
+                <div class="playlist-details">
+                  <h1>playlist</h1>
+                  <h2>author</h2>
+                  <p>description</p>
+                </div>
+              </div>
+              <div class="playlist-content">
+                <ul class="song-list">
+                  <li class="list-song">
+                    <div class="song-info">
+                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLu1FFozStQ0trt8Ru6pirKphwkK_dLF9BtQ8sB4ZYdw&s">
+                      <div class="song-details">
+                        <h1>Epic Song</h1>
+                        <p>Epic Guy</p>
+                      </div>
+                    </div>
+                    <p class="song-album">Album Or Something</p>
+                    <p class="song-num">1</p>
+
+                  </li>
+
+                  
+                </ul>
+              </div>
+            </div>
+          <!--<div class="content" data-tab="search">
+            <div class="search-release-wide">
+              <img>
+              <h1>Release</h1>
+              <h2>Artist</h2>
+            </div>
+            <div class="search-release-wide">
+              <img>
+              <h1>Release</h1>
+              <h2>Artist</h2>
+            </div>
+            <ul class="song-list">
+            </ul>
+          </div>-->
         </div>
-        <div class="playback"></div>
+        <div class="playback">
+        </div>
     </div>
     <script src="./renderer.js"></script>
 </body>
