@@ -26,6 +26,7 @@ function loadContentPage(page, values) {
 
 
 
+
 var settings = JSON.parse(window.localStorage.getItem("settings") || "{}");
 
 
@@ -39,6 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadTheme(settings.theme || "dark");
 
+    document.querySelectorAll("a").forEach((v) => {
+        v.addEventListener("click", (ev) => {
+            
+        })
+    });
+    
     window.listenAPI.onPlaylistUpdated((playlists) => {
         playlistArea.innerHTML = "";
         for (var playlistId in playlists) {
