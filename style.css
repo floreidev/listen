@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Archivo';
+    color: var(--color);
+}
+
+h1 {
+    font-family: 'Archivo Black';
+}
+
+h2 {
+    font-weight: 100;
+}
+
+html, body {
+    width: 100vw; height: 100vh;
+}
+
+#container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    background: var(--dark);
+}
+
+#query {
+    width: 50%;
+}
+
+input[type="text"] {
+    outline: none;
+    border: none;
+    background: var(--secondary);
+    padding: 8px;
+    border-radius: 24px;
+    height: 32px;
+    font-family: 'Archivo Black';
+}
+
+
+.playlist-item {
+    display: flex;
+    width: 97%;
+    padding: 4px;
+    height: 64px;
+    margin: 4px 0px 4px 0px;
+    border-radius: 8px;
+    background: var(--secondary);
+    cursor: pointer;
+}
+
+.playlist-item:hover {
+    background: var(--light);
+}
+
+.playlist-item > img {
+    height: 56px;
+    width: 56px;
+    border-radius: 8px;
+}
+
+.playlist-item-details > *, .playlist-item-details {
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playlist-item-details {
+    margin-left: 12px;
+}
+
+#searchForm {
+    width: 100%;
+    padding: 8px;
+}
+
+
+.frame {
+    height: 24px;
+    width: 100%;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    -webkit-app-region: drag;
+    background: var(--dark);
+}
+
+.frame > button {
+    -webkit-app-region: no-drag;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    margin: 2px;
+    border: none;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    background: var(--main);
+    margin: 8px 8px 4px 8px;
+    border-radius: 8px;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    background: var(--dark);
+}
+
+.sidebar {
+    width: 256px;
+    background: var(--main);
+    margin: 4px 4px 8px 8px;
+    border-radius: 8px;
+    align-items: center;
+    display: flex;
+    padding: 8px;
+    flex-direction: column  ;
+}
+
+.content {
+    flex: 1;
+    background: var(--main);
+    margin: 4px 8px 8px 4px;
+    border-radius: 8px;
+}
+
+.playback {
+    height: 92px;
+    background: var(--main);
+}
+
+button {
+    outline: none;
+}
+
+#min {
+    background-color: #FFBD44;
+}
+
+#max {
+    background-color: #00CA4E;
+}
+
+#close {
+    background-color: #FF605C;
+}
