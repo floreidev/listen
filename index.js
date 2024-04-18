@@ -12,7 +12,7 @@ import { MusicBrainzApi } from 'musicbrainz-api';
 const mbApi = new MusicBrainzApi({
     appName: 'listen.',
     appVersion: '0.1.0',
-    appContactInfo: 'electronicankle@protonmail.com'
+    appContactInfo: '--HIDDEN--'
 });
 
 const YTDLP = new YTDLPWrapper();
