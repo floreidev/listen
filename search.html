@@ -1,0 +1,52 @@
+<div id="content">
+
+</div>
+<script>
+    var SEARCH = "{%QUERY%}"
+    window.listenAPI.search(SEARCH, (results) => {
+        var wide0 = results.web[0]
+        var wide1 = results.web[1]
+        if(results.local.length > 0) {
+            wide0 = results.local[0]
+            wide1 = results.web[1]
+            if(results.local.length > 1) wide1 = results.local[1]
+            else results.web.shift();
+        } else {
+            results.web.shift();
+            results.web.shift();
+        }
+        var html = `
+        <div class="search-wide-area">
+            <div class="search-release-wide">
+              <img src="${wide0.thumbs[0].url}">
+              <div class="wide-details">
+              <h1>${wide0.title}</h1>
+              <h2>${wide0.artist}</h2>
+              </div>
+            </div>
+            <div class="search-release-wide">
+              <img src="${wide1.thumbs[0].url}">
+              <div class="wide-details">
+              <h1>${wide1.title}</h1>
+              <h2>${wide1.artist}</h2>
+              </div>
+            </div>
+            </div>
+            <ul class="song-list">`
+        for(var result in results.web) {
+            var r= results.web[result];
+            html += `<li class="list-song" tabindex="0">
+                    <div class="song-info">
+                      <img src="${r.thumbs[0].url}">
+                      <div class="song-details">
+                        <h1>${r.title}</h1>
+                        <p>${r.artist}</p>
+                      </div>
+                    </div>
+                  </li>`
+        }
+        html += `</ul>`
+        document.getElementById("content").innerHTML = html;
+        
+    })
+</script>

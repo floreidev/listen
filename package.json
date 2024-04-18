@@ -11,6 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "electron": "^30.0.0"
-  }
+    "electron": "^30.0.0",
+    "fuse.js": "^7.0.0",
+    "fuzzy-search": "^3.2.1",
+    "musicbrainz-api": "^0.15.0",
+    "yt-dlp-wrap": "^2.3.12"
+  },
+  "type": "module"
 }

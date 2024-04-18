@@ -7,15 +7,34 @@ var themes = {
         "highlight": "#595A5A",
         "color": "#fff"
     },
-  light: {
-    "main": "#ededed",
-    "secondary": "#e8e8e8",
-    "dark": "#fff",
-    "light": "#dbdbdb",
-    "highlight": "#a6a7a7"
-  }
+    light: {
+        "main": "#ededed",
+        "secondary": "#e8e8e8",
+        "dark": "#fff",
+        "light": "#dbdbdb",
+        "highlight": "#a6a7a7"
+    }
 }
 
+function setInnerHTML(elm, html) {
+    elm.innerHTML = html;
+
+    Array.from(elm.querySelectorAll("script"))
+        .forEach(oldScriptEl => {
+            const newScriptEl = document.createElement("script");
+
+            Array.from(oldScriptEl.attributes).forEach(attr => {
+                newScriptEl.setAttribute(attr.name, attr.value)
+            });
+
+            const scriptText = document.createTextNode(oldScriptEl.innerHTML);
+            newScriptEl.appendChild(scriptText);
+
+            oldScriptEl.parentNode.replaceChild(newScriptEl, oldScriptEl);
+        });
+}
+
+var currentPage = `index`;
 var settings = JSON.parse(window.localStorage.getItem("settings") || "{}");
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -30,13 +49,15 @@ document.addEventListener("DOMContentLoaded", () => {
     loadTheme(settings.theme || "dark");
 
     function loadContentPage(page, values) { // SPA  Fetching
-      var realPage = page.indexOf("/") != -1 ? page.split("/")[page.split("/").length - 1] : page;
-      console.log(realPage, values)
-      var raw = window.listenAPI.getPage(page);
-      for(var from in values) {
-        raw = raw.replace(new RegExp(from, "g"), values[from]);
-      }
-      main.innerHTML = raw;
+        console.log("Running content fetch...")
+        currentPage = page;
+        var realPage = page.indexOf("/") != -1 ? page.split("/")[page.split("/").length - 1] : page;
+        window.listenAPI.getPage(realPage, (raw) => {
+            for (var from in values) {
+                raw = raw.replace(new RegExp(`{%${from.toUpperCase()}%}`, "g"), values[from]);
+            }
+            setInnerHTML(main, raw);
+        });
     }
 
     document.querySelectorAll("a").forEach((v) => { // SPA Init
@@ -48,14 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     });
     document.querySelectorAll("form").forEach((v) => { // SPA init
-      v.addEventListener("submit", (ev) => {
-          ev.preventDefault()
-          const dat = Object.fromEntries(new FormData(v).entries())
-          const page = v.action;
-          loadContentPage(page, dat);
-      })
-  });
-    
+        v.addEventListener("submit", (ev) => {
+            ev.preventDefault()
+            const dat = Object.fromEntries(new FormData(v).entries())
+            const page = v.action;
+            loadContentPage(page, dat);
+        })
+    });
+
     window.listenAPI.onPlaylistUpdated((playlists) => {
         playlistArea.innerHTML = "";
         for (var playlistId in playlists) {
