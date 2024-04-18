@@ -56,7 +56,7 @@ function createWindow() {
     var knownArtists = [];
 
     function findPureInfo(infoT, chnl) {
-        var isSpedUp = infoT.search(/[[(]?[ ]?sped up( version)?[ ]?[\])]?/gmi) != -1;
+        var isSpedUp = infoT.search(/[[(]?[ ]?(sped|slowed) (up|down)( version)?[ ]?[\])]?/gmi) != -1;
         var title = infoT.replace(/[[(]?[ ]?sped up( version)?[ ]?[\])]?/gmi, "").trim();
         var artist = chnl.replace(" - Topic", "").trim();
         title = title.split(/([{\[\(][omvlefs]\|?)|(([\(]?ft)|([\(]?featuring))/gmi)[0].trim();
